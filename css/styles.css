@@ -39,7 +39,7 @@ a, a:visited, a:active, a:hover {
 
     .intro h1 {
         font-family: 'Roboto Slab', serif;
-        font-size: 30px;
+        font-size: 26px;
         max-width: 770px;
         width: 100%;
         padding: 20px;
@@ -48,7 +48,7 @@ a, a:visited, a:active, a:hover {
     }
 
         .intro h1 .highlight {
-            color: #0088E1;
+            font-size: 34px;
         }
 
     .intro p {
