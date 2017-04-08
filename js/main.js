@@ -68,15 +68,17 @@ var template = Handlebars.compile(source.innerHTML);
 var context = {};
 
 /* Event handlers */
-introContinue.addEventListener('click', function () {
+introContinue.addEventListener('click', continueToQuestions);
+introContinue.addEventListener('touchend', continueToQuestions);
+
+function continueToQuestions () {
     removeClass(intro, 'active');
     addClass(survey, 'active');
     var f = survey.firstElementChild;
     addClass(f, 'active');
     survey.getElementsByClassName('a')[0].focus(); // add focus to first input
-
     ga('send', 'event', 'continue', 'click', 'Continue button clicked');
-});
+}
 
 /* Questions Cycle */
 var i = questions.length; while (i--) {
