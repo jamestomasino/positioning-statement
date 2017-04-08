@@ -39,6 +39,7 @@ function randomizeTableValues () {
     context.result = results[ Math.floor(Math.random() * results.length) ];
 }
 
+// TODO: Make this work, then add a button to allow download/save
 function saveElementToPNG (el) {
     html2canvas(el, {
         onrendered: function(canvas) {
@@ -72,24 +73,35 @@ introContinue.addEventListener('click', function () {
     var f = survey.firstElementChild;
     addClass(f, 'active');
     survey.getElementsByClassName('a')[0].focus(); // add focus to first input
+
+    ga('send', 'event', 'continue', 'click', 'Continue button clicked');
 });
 
 /* Questions Cycle */
 var i = questions.length; while (i--) {
     questions[i].addEventListener('keyup', function(e) {
+
+        // Enter responds to each question
         if (e.keyCode == 13) {
             var t = e.target;
             var p = e.target.parentElement;
             var v = t.value;
             var d = p.dataset;
             var dest = d.dest;
-            v = v.replace(/[^a-zA-Z0-9 \-\.\"\'\(\)]/g, ''); // sanitize
+
+            // Sanitize the input
+            v = v.replace(/[^a-zA-Z0-9 \-\.\"\'\(\)]/g, '');
 
             // Test that a value was added
             if (v.trim() === '') {
                 addClass(t, 'error');
             } else {
+
+                // Store the entered value in the correct context field
                 context[dest] = v;
+
+                // Log the info to analytics for shits & giggles
+                ga('send', 'event', "question", dest, v);
 
                 // Check for next sibling
                 var n = p.nextElementSibling;
