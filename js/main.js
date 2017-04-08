@@ -54,13 +54,14 @@ function saveElementToPNG (el) {
 /*****************************************************************************/
 
 /* Dom Elements */
-var intro            = document.getElementById('intro');
-var survey           = document.getElementById('survey');
-var positioning      = document.getElementById('positioning');
-var source           = document.getElementById('table-template');
-var positioningTable = document.getElementById('positioning-table');
-var introContinue    = intro.getElementsByClassName('continue')[0];
-var questions        = survey.getElementsByClassName('question');
+var intro               = document.getElementById('intro');
+var survey              = document.getElementById('survey');
+var positioning         = document.getElementById('positioning');
+var source              = document.getElementById('table-template');
+var positioningTable    = document.getElementById('positioning-table');
+var positioningProgress = document.getElementById('progress');
+var introContinue       = intro.getElementsByClassName('continue')[0];
+var questions           = survey.getElementsByClassName('question');
 
 // Template for table
 var template = Handlebars.compile(source.innerHTML);
@@ -135,6 +136,12 @@ var i = questions.length; while (i--) {
 
                     // Show the results
                     addClass(positioning, 'active');
+
+                    // After a delay, show the table
+                    setTimeout( function () {
+                        removeClass(positioningProgress, 'active');
+                        addClass(positioningTable, 'active');
+                    }, 3000);
 
                     // Point focus to a non-input field to blur
                     document.getElementById('positioning').focus();
