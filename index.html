@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="description" content="Pharmaceutical Positioning-Statement Generator">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Pharmaceutical Positioning-Statement Generator</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+        <link rel="stylesheet" href="css/styles.css" type="text/css" charset="utf-8" />
+    </head>
+
+    <body>
+        <div id="intro" class="intro active">
+            <h1>Pharmaceutical Positioning-Statement Generator</h1>
+            <p>Our novel, artificial intelligence enables you to create a positioning statement for your pharmaceutical brand. Your results are instantaneous and the result of many years of experience with positioning workshops. </p>
+            <p>Your peers are paying agencies and consultants as much as $50,000 to $100,000 for this important deliverable.  But you are a no-nonsense marketer who seeks to drive ROI and scripts with a limited budget. </p>
+            <p>We are providing this service at no cost (although we welcome donations to the American Cancer Society or our Hendricks fund).</p>
+            <p>To begin, simply answer the following seven questions in the same format as the example:</p>
+            <div class="continue">Continue</div>
+        </div>
+
+        <div id="survey" class="survey">
+            <div class="question active" data-dest="product">
+                <span class="q">What is your product’s brand name?</span>
+                <span class="e">Lipitor</span>
+                <input class="a"></input>
+            </div>
+            <div class="question" data-dest="generic">
+                <span class="q">What is the generic name?</span>
+                <span class="e">atorvastatin calcium</span>
+                <input class="a"></input>
+            </div>
+            <div class="question" data-dest="competitor">
+                <span class="q">What is your biggest competitor?</span>
+                <span class="e">Crestor</span>
+                <input class="a"></input>
+            </div>
+            <div class="question" data-dest="patients">
+                <span class="q">For whom is the product indicated?</span>
+                <span class="e">adults and children over 10 whose cholesterol does not come down enough with exercise and a low-fat diet alone.</span>
+                <input class="a"></input>
+            </div>
+            <div class="question" data-dest="targethcps">
+                <span class="q">What HCPs are you targeting?</span>
+                <span class="e">primary care healthcare professionals</span>
+                <input class="a"></input>
+            </div>
+            <div class="question" data-dest="claim">
+                <span class="q">What is the most important claim? (start with verb)?</span>
+                <span class="e">lowers total cholesterol 29% to 45% in as little as two weeks</span>
+                <input class="a"></input>
+            </div>
+            <div class="question" data-dest="disease">
+                <span class="q">What disease is the product indicated to treat?</span>
+                <span class="e">high cholesterol</span>
+                <input class="a"></input>
+            </div>
+        </div>
+
+        <div id="positioning" class="positioning">
+            <div id="positioning-table" class="positioning-table"></div>
+        </div>
+
+    </body>
+
+    <script id="table-template" type="text/x-handlebars-template">
+<table>
+	<tr>
+		<td>To</td>
+		<td>{{targethcps}} treating {{patients}}</td>
+	</tr>
+	<tr>
+		<td>Who</td>
+		<td>are committed to treating {{disease}} and have patients who are not fully resolved with {{competitor}}</td>
+	</tr>
+	<tr>
+		<td>{{product}}</td>
+		<td>is the {{adjective}} {{generic}}</td>
+	</tr>
+	<tr>
+		<td>That</td>
+		<td>is the safe and effective gold-standard in the treatment of {{disease}}</td>
+	</tr>
+	<tr>
+		<td>Because</td>
+		<td>it {{claim}}</td>
+	</tr>
+	<tr>
+		<td>So that</td>
+		<td>{{targethcps}} can feel {{feeling}} knowing they are ensuring their patients {{result}}</td>
+	</tr>
+</table>
+    </script>
+
+    <script src="js/handlebars-v4.0.5.js"></script>
+    <script src="js/html2canvas.js"></script>
+    <script src="js/main.js"></script>
+</html>
+
+<!-- vi: set shiftwidth=4 tabstop=4 expandtab: -->
