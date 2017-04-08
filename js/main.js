@@ -33,6 +33,13 @@ function addClass (el, className) {
         el.className += ' ' + className;
 }
 
+function hasClass (el, className) {
+    if (el.classList)
+        el.classList.contains(className);
+    else
+        new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
+}
+
 function randomizeTableValues () {
     context.adjective = adjectives[ Math.floor(Math.random() * adjectives.length) ];
     context.feeling = feelings[ Math.floor(Math.random() * feelings.length) ];
@@ -60,6 +67,7 @@ var positioning         = document.getElementById('positioning');
 var source              = document.getElementById('table-template');
 var positioningTable    = document.getElementById('positioning-table');
 var positioningProgress = document.getElementById('progress');
+var questionHint        = document.getElementById('question-hint');
 var introContinue       = intro.getElementsByClassName('continue')[0];
 var questions           = survey.getElementsByClassName('question');
 
@@ -83,6 +91,11 @@ function continueToQuestions () {
 /* Questions Cycle */
 var i = questions.length; while (i--) {
     questions[i].addEventListener('keyup', function(e) {
+
+        // Show hint once you start typing
+        if (! hasClass(questionHint, 'active')) {
+            addClass(questionHint, 'active');
+        }
 
         // Enter responds to each question
         if (e.keyCode == 13) {
