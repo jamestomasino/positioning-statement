@@ -108,6 +108,10 @@ var i = questions.length; while (i--) {
             // Sanitize the input
             v = v.replace(/[^a-zA-Z0-9 \-\.\"\'\(\)]/g, '');
 
+            if (dest !== 'product' && dest !== 'competitor') {
+                v = v.toLowerCase();
+            }
+
             // Test that a value was added
             if (v.trim() === '') {
                 addClass(t, 'error');
